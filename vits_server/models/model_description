@@ -1,0 +1,9 @@
+{
+  "modelMap":{
+    "paimon": {
+      "displayName": "派蒙",
+      "modelConfigPath": "paimon6k.json",
+      "modelPath":"paimon6k_390k.pth"
+    }
+  }
+}

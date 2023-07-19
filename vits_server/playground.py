@@ -8,14 +8,14 @@ sys.path.append('vits_server/vits')
 from vits_server.vits_service import VitsService
 
 config_combo = [
-    ("vits_server/models/paimon6k.json",
-     "vits_server/models/paimon6k_390k.pth"),
+    ("models/paimon6k.json",
+     "models/paimon6k_390k.pth"),
 ]
 
 
 def test_generate():
     for cfg, model in config_combo:
-        a = VitsService(cfg, model, 'test', 1)
+        a = VitsService({"model": "paimon"})
         p = pyaudio.PyAudio()
         audio = a.read('统一计算设备架构由 NVIDIA 推出的并行计算平台和编程模型。 它通过利用图形处理单元 (GPU) 的强大功能来显着提高计算性能。'
                        '最新发行版本11.6.2，2022年3月发行。目前几乎所有的编程语言，不使用特定框架，只能使用CPU运行所编的程序。'
@@ -50,5 +50,11 @@ def test_generate():
 
 
 def test_save_audio():
-    vits = VitsService(config_combo[0][0], config_combo[0][1], 'test', 1)
-    vits.read_save("ww", "test.wav")
+    vits = VitsService({"model": "paimon"})
+    vits.read_save("你好啊旅行者", "hello")
+
+
+def test_save_mp3():
+    vits = VitsService({"model": "paimon"})
+    path = vits.read_save_mp3("你好啊旅行者", "hello")
+    print(path)
