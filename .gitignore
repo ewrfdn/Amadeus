@@ -6,4 +6,5 @@
 .idea/inspectionProfiles/profiles_settings.xml
 .idea/inspectionProfiles/Project_Default.xml
 vits_server/models/?*.?*
-vits_server/?*.wav
+*.wav
+*.mp3
