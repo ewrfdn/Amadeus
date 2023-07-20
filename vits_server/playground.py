@@ -58,3 +58,22 @@ def test_save_mp3():
     vits = VitsService({"model": "paimon"})
     path = vits.read_save_mp3("你好啊旅行者", "hello")
     print(path)
+
+
+def longestCommonSubstring(text1: str, text2: str) -> int:
+    m, n = len(text1), len(text2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]
+    unmatch = [[0] * (n + 1) for _ in range(m + 1)]
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+                unmatch[i][j] += 1
+
+    return dp[m][n]
+
+
+def test_longest_common_substring():
+    longestCommonSubstring("1.忌烟、酒及辛辣、油腻食物", "1.忌烟、酒及辛辣、生冷，油腻食物")

@@ -6,7 +6,7 @@ from sanic import Blueprint, response
 from vits_server.utils.time import current_timestamp
 from vits_server.vits_service import VitsService
 
-bp = Blueprint("audio", url_prefix="/audio", version=1)
+bp = Blueprint("audio", url_prefix="/vits", version=1)
 
 
 @bp.route("/text2mp3", methods=["POST", "OPTIONS"])
@@ -19,3 +19,9 @@ async def upload_file_to_workspace(request):
     vits = VitsService({"model": model})
     path = vits.read_save_mp3(text, file_name)
     return await response.file_stream(path)
+
+
+@bp.route("/models", methods=["get", "OPTIONS"])
+async def get_models(request):
+    res = VitsService.get_model_list()
+    return response.JSONResponse(res)

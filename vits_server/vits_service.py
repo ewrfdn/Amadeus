@@ -74,6 +74,20 @@ class VitsService:
             res.append(item)
         return {"list": res}
 
+    @staticmethod
+    def get_model_list(model_folder="models"):
+        config_path = os.path.join(model_folder, "model_description")
+        with open(config_path, encoding="utf-8") as f:
+            config_str = f.read()
+            all_model_description = json.loads(config_str)
+            model_map = all_model_description.get("modelMap", {})
+            res = []
+            for key in model_map.keys():
+                item = copy.deepcopy(model_map[key])
+                item["name"] = key
+                res.append(item)
+            return {"list": res}
+
     def get_model_description(self):
         config_path = os.path.join(self.model_folder, "model_description")
         with open(config_path, encoding="utf-8") as f:
