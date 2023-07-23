@@ -12,7 +12,7 @@ if (!(Test-Path -path .\build -PathType Container)) {
   New-Item -ItemType Directory -Path .\build
 }
 
-docker build --no-cache -t amadeus/vits_server:$tag .
+docker build -f ./dockerfile_full -t amadeus/vits_server:$tag .
 docker tag amadeus/vits_server:$tag
 docker save -o ./build/vits_server-$tag.tgz amadeus/vits_server:$tag
  

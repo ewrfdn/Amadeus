@@ -10,6 +10,6 @@ echo "build docker image with tag: amadeus/vits_server:$tag"
 
 mkdir build
 
-docker build --no-cache -t amadeus/vits_server:$tag .
+docker build -t amadeus/vits_server:$tag .
 docker tag amadeus/vits_server:$tag
 docker save -o ./build/sd_control_center-$tag.tgz amadeus/vits_server:$tag

@@ -1,0 +1,30 @@
+FROM nvidia/cuda:12.2.0-runtime-ubuntu20.04
+RUN apt update
+# RUN apt-get update
+# RUN apt install software-properties-common -y
+# RUN add-apt-repository ppa:deadsnakes/ppa
+# RUN apt install python3.10 -y
+RUN apt install ffmpeg -y
+
+
+
+# 从源码构建
+RUN apt install -y \
+  wget build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev \
+  aptitude \
+  libreadline-dev libffi-dev libsqlite3-dev libbz2-dev liblzma-dev && \
+  apt clean && \
+  rm -rf /var/lib/apt/lists/*
+WORKDIR /temp
+
+RUN wget https://www.python.org/ftp/python/3.10.0/Python-3.10.0.tgz && \
+  tar -xvf Python-3.10.0.tgz
+
+RUN cd Python-3.10.0 && \
+  ./configure --enable-optimizations && \
+  make && \
+  make install
+
+RUN rm -r /temp && \
+  ln -s /usr/local/bin/python3 /usr/local/bin/python && \
+  ln -s /usr/local/bin/pip3 /usr/local/bin/pip
