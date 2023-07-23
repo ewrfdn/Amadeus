@@ -56,7 +56,7 @@ python train_ms.py -c <config> -m <folder>
 ```
 ## Inference
 ### Online
-See [inference.ipynb](inference.ipynb)
+See [inference.ipynb](vits_server/src/vits/inference.ipynb)
 ### Offline
 See [MoeGoe](https://github.com/CjangCjengh/MoeGoe)
 

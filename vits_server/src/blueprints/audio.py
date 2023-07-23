@@ -1,10 +1,7 @@
-import asyncio
-import threading
-from typing import Tuple
 from shortuuid import uuid
 from sanic import Blueprint, response
-from vits_server.utils.time import current_timestamp
-from vits_server.vits_service import VitsService
+from src.utils.time import current_timestamp
+from src.vits_service import VitsService
 
 bp = Blueprint("audio", url_prefix="/vits", version=1)
 

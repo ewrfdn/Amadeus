@@ -51,9 +51,9 @@ _iast_to_ipa = [(re.compile('%s' % x[0]), x[1]) for x in [
 
 def devanagari_to_ipa(text):
     text = text.replace('ॐ', 'ओम्')
-    text = re.sub(r'\s*।\s*$', '.', text)
+    text = re.sub(r'\s*।\s*$', '', text)
     text = re.sub(r'\s*।\s*', ', ', text)
-    text = re.sub(r'\s*॥', '.', text)
+    text = re.sub(r'\s*॥', '', text)
     text = sanscript.transliterate(text, sanscript.DEVANAGARI, sanscript.IAST)
     for regex, replacement in _iast_to_ipa:
         text = re.sub(regex, replacement, text)

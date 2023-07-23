@@ -4,8 +4,8 @@ import numpy as np
 import pyaudio
 import sys
 
-sys.path.append('vits_server/vits')
-from vits_server.vits_service import VitsService
+sys.path.append('vits')
+from vits_service import VitsService
 
 config_combo = [
     ("models/paimon6k.json",

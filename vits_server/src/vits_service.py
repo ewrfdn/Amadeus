@@ -6,17 +6,16 @@ import os
 import torch
 import logging
 import json
-import vits_server.vits.commons as commons
-import vits_server.vits.utils as utils
-from vits_server.vits.models import SynthesizerTrn
-from vits_server.vits.text.symbols import symbols
-from vits_server.vits.text import text_to_sequence
+import commons as commons
+import utils as utils
+from models import SynthesizerTrn
+from text import symbols
+from text import text_to_sequence
 from pydub import AudioSegment
-from vits_server.utils.time import current_timestamp
+from src.utils.time import current_timestamp
 from shortuuid import uuid
 
 os.environ["PYTORCH_JIT"] = "0"
-sys.path.append('vits_server/vits')
 
 logging.getLogger().setLevel(logging.INFO)
 logging.basicConfig(level=logging.INFO)

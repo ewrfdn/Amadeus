@@ -1,0 +1,22 @@
+version: '3'
+
+services:
+  vits_server:
+    image: amadeus/vits_server:dev
+    container_name: vits_server
+    ports:
+      - "6581:6581"
+    network_mode: "bridge"
+    privileged: false
+    restart: always
+    # environment:
+    #   PORT: "6274"
+    #   DOCUMENT_RECOGNITION_ENDPOINT: "http://192.168.0.147:6273"
+    #   TOKEN_MT_SECRET_ENDPOINT: "http://192.168.0.147:5100/secret"
+    volumes:
+      - C:\data\amadeus\data\vits_server\models:/app/models
+      - C:\data\amadeus\data\vits_server\outputs:/app/outputs
+    # volumes:
+    #   - you local models path:/app/models 
+    #   - you local outputs path:/app/outputs 
+

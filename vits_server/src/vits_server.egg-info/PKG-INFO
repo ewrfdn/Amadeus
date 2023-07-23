@@ -1,3 +1,16 @@
+Metadata-Version: 2.1
+Name: vits-server
+Version: 1.0.0
+Summary: vits_server
+Home-page: https://github.com/ewrfdn/meadow_rpa/vits_server
+Author: Hui Zhang
+Author-email: ewrfdn@outlook.com
+License: Not open source
+Requires-Python: ~=3.10
+Description-Content-Type: text/markdown
+Provides-Extra: dev
+Provides-Extra: test
+
 项目初始化步骤
 ##windows 下部署开发
 
@@ -21,6 +34,12 @@ pip install -r ./requirement.text
 ## 安装依赖包
 
 ```bash
+# 安装必要的Python Package打包需要的依赖包
+pip install -U pip setuptools wheel build
+
+# 生成python包
+python -m build
+
 # 仅仅安装产品需要的依赖包
 pip install -e . -i https://pypi.tuna.tsinghua.edu.cn/simple
 

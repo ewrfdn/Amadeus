@@ -1,8 +1,15 @@
-from config import AppConfig
+import sys
+import os
+print(os.getcwd())
+sys.path.append(os.getcwd())
 
+sys.path.append('./src/vits')
+
+from src.config import AppConfig
 from sanic import Sanic, response
 from sanic_cors import CORS
-from vits_server.blueprints.audio import bp as audio_bp
+from src.blueprints.audio import bp as audio_bp
+
 
 
 def serve_error_handle(request, exception):
