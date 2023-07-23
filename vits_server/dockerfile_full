@@ -30,11 +30,13 @@ RUN rm -r /temp && \
   ln -s /usr/local/bin/pip3 /usr/local/bin/pip
 
 WORKDIR /app
+RUN pip install --upgrade pip
+RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
+## https://stackoverflow.com/questions/49223985/errors-installing-pyaudio-failed-building-wheel-for-pyaudio
+RUN apt install -y portaudio19-dev python-all-dev
 
 COPY . .
-RUN pip install --upgrade pip
 RUN pip3 install -e .
-RUN pip3 install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/cu121
 
 
 EXPOSE 6581
