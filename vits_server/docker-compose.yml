@@ -9,6 +9,13 @@ services:
     network_mode: "bridge"
     privileged: false
     restart: always
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+              count: 1
     # environment:
     #   PORT: "6274"
     #   DOCUMENT_RECOGNITION_ENDPOINT: "http://192.168.0.147:6273"
